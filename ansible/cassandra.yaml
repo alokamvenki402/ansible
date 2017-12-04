@@ -1,0 +1,4 @@
+hosts: cassandra
+  roles:
+    - role: ansible-cassandra
+      cassandra_hosts: '{{ groups["cassandra"] }}'

@@ -1,0 +1,9 @@
+- hosts: hostnames
+  become: yes
+  roles:
+   - httpd
+   
+- hosts: cassandra
+  become: yes
+  roles:
+   - cassandra

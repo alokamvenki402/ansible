@@ -1,0 +1,4 @@
+- hosts: lokam
+  become: yes
+  roles:
+   - cassandra

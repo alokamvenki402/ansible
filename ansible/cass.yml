@@ -1,0 +1,4 @@
+- hosts: sumanth
+  become: yes
+  roles:
+   - cassandra

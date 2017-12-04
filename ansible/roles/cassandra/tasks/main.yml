@@ -1,0 +1,33 @@
+---
+# tasks file for cassandra
+- file:
+    path: /etc/yum.repos.d/cassandra.repo
+    state: touch
+
+- name: install dse
+  yum: name=java
+  tags:
+   - dse
+
+- name: download cassandra
+  copy: src=/root/ansible/roles/cassandra/files/cassandra.repo dest=/etc/yum.repos.d/cassandra.repo
+  tags:
+   - download cass
+
+- name: install dse
+  yum: name=dse-full-4.8.9
+  tags:
+   - dse
+
+- name: starting dse
+  service:
+   name: dse
+   state: started
+   enabled: yes
+  tags:
+   - dse
+   - dse-service
+- name: bootstrap
+  copy: src=/home/ansible/cassandra.yaml dest=/etc/dse/cassandra/cassandra.yaml
+  tags:
+   - bootstrap

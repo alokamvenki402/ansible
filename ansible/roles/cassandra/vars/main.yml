@@ -1,0 +1,6 @@
+---
+# vars file for cassandra
+
+cassandra_version: 4.8.9
+
+

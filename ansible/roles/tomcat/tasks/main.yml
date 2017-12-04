@@ -1,0 +1,17 @@
+---
+# tasks file for tomcat
+- name: Download Tomcat
+  get_url: url=http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin/apache-tomcat-7.0.61.tar.gz dest=/opt/apache-tomcat-7.0.61.tar.gz
+
+- name: Extract archive
+  command: chdir=/usr/share /bin/tar xvf /opt/apache-tomcat-7.0.61.tar.gz -C /opt/ creates=/opt/apache-tomcat-7.0.61
+
+
+- name: Start Tomcat
+  script: /root/opt/apache-tomcat-7.0.61/bin/startup.sh
+  sudo: yes
+
+- name: copy
+  copy: src=/var/lib/jenkins/workspace/BuildFromDevelop/target/StockCheck.war dest=/usr/share/dse/tomcat/webapps owner=root group=root
+  tags:
+   - war

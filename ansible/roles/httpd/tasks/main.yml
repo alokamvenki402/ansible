@@ -1,0 +1,18 @@
+---
+# tasks file for httpid
+- name: install httpd
+  yum: name=httpd
+  tags:
+   - httpd
+
+- name: starting httpd
+  service:
+   name: httpd
+   state: started
+   enabled: yes
+  tags:
+   - httpd
+   - htppd-service
+
+  
+
